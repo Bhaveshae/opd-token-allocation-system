@@ -231,7 +231,7 @@ The system handles:
 
 
 ## 👤 Author
-Bhavesh Chaudhary - Medoc Health IT Pvt Ltd
+Bhavesh Chaudhary
 
 ## 🙏 Acknowledgments
 
