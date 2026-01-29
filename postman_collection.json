@@ -1,0 +1,283 @@
+{
+  "info": {
+    "name": "OPD Token Allocation System",
+    "description": "API collection for testing OPD token allocation endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "Doctors",
+      "item": [
+        {
+          "name": "Create Doctor",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Dr. Sarah Johnson\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/doctor",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["doctor"]
+            }
+          }
+        },
+        {
+          "name": "Get All Doctors",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/doctor",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["doctor"]
+            }
+          }
+        },
+        {
+          "name": "Get Doctor by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/doctor/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["doctor", "1"]
+            }
+          }
+        },
+        {
+          "name": "Create Slot",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"start\": \"09:00\",\n  \"end\": \"10:00\",\n  \"capacity\": 3\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/doctor/1/slot",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["doctor", "1", "slot"]
+            }
+          }
+        },
+        {
+          "name": "Get Doctor Slots",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/doctor/1/slots",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["doctor", "1", "slots"]
+            }
+          }
+        },
+        {
+          "name": "Get Doctor Summary",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/doctor/1/summary",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["doctor", "1", "summary"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tokens",
+      "item": [
+        {
+          "name": "Book Online Token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patient\": \"John Doe\",\n  \"doctorId\": 1,\n  \"type\": \"ONLINE\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/token/book",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["token", "book"]
+            }
+          }
+        },
+        {
+          "name": "Book Walk-in Token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patient\": \"Jane Smith\",\n  \"doctorId\": 1,\n  \"type\": \"WALKIN\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/token/book",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["token", "book"]
+            }
+          }
+        },
+        {
+          "name": "Book Priority Token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patient\": \"Carol Williams\",\n  \"doctorId\": 1,\n  \"type\": \"PRIORITY\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/token/book",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["token", "book"]
+            }
+          }
+        },
+        {
+          "name": "Book Emergency Token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patient\": \"EMERGENCY Patient\",\n  \"doctorId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/token/emergency",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["token", "emergency"]
+            }
+          }
+        },
+        {
+          "name": "Cancel Token",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/token/cancel/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["token", "cancel", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get Token by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/token/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["token", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get All Tokens for Doctor",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/token/doctor/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["token", "doctor", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get Tokens for Slot",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/token/slot/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["token", "slot", "1"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
